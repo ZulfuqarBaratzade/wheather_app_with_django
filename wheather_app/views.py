@@ -14,6 +14,18 @@ def index(request):
         city_1=request.POST["city1"]
         city_2=request.get("city2",None)
 
+        wheater_data1,daily_forecasts_1=fetch_wheather_and_forecast(city_1,API_KEY,current_wheather_url,fore_cast_url)
+        if city_2:
+            wheater_data2,daily_forecasts_2=fetch_wheather_and_forecast(city_2,API_KEY,current_wheather_url,fore_cast_url)
+        else:
+            wheater_data2,daily_forecasts_2=None,None
+        context={
+            "wheater_data1":wheater_data1,
+            "wheater_data2":wheater_data2,
+            "daily_forecasts_1":daily_forecasts_1,
+            "daily_forecasts_2":daily_forecasts_2
+        }
+        return render(request,"wheater_app/index.html",context)
     else:
         return render(request,"wheather_app/index.html")
     
