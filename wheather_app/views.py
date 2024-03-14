@@ -7,12 +7,12 @@ from django.shortcuts import render
 
 
 def index(request):
-    API_KEY = open("APIKEY.env","r").read()
+    API_KEY = open("/home/baratzade/Desktop/wheather_app_with_django/APIKEY","r").read()
     current_wheather_url="https://api.openwheathermap.org/data/2.5/wheather?q={}&appid={}"
     fore_cast_url="https://api.openwheathermap.org/data/2.5/onecall?latt={}&lon={}&exclude=current,minutely,hourly,alerts&appid={}"
     if request.method=="POST":
         city_1=request.POST["city1"]
-        city_2=request.get("city2",None)
+        city_2=request.POST.get("city2",None)
 
         wheater_data1,daily_forecasts_1=fetch_wheather_and_forecast(city_1,API_KEY,current_wheather_url,fore_cast_url)
         if city_2:
