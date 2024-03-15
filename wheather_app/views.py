@@ -8,8 +8,8 @@ from django.shortcuts import render
 
 def index(request):
     API_KEY = open("/home/baratzade/Desktop/wheather_app_with_django/APIKEY","r").read()
-    current_wheather_url="https://api.openwheathermap.org/data/2.5/wheather?q={}&appid={}"
-    fore_cast_url="https://api.openwheathermap.org/data/2.5/onecall?latt={}&lon={}&exclude=current,minutely,hourly,alerts&appid={}"
+    current_wheather_url="https://api.openweathermap.org/data/2.5/weather?q={}&appid={}"
+    fore_cast_url="https://api.openweathermap.org/data/2.5/onecall?latt={}&lon={}&exclude=current,minutely,hourly,alerts&appid={}"
     if request.method=="POST":
         city_1=request.POST["city1"]
         city_2=request.POST.get("city2",None)
